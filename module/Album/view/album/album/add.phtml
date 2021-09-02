@@ -17,6 +17,10 @@ $artist = $form->get('artist');
 $artist->setAttribute('class', 'form-control');
 $artist->setAttribute('placeholder', 'Artist');
 
+$date = $form->get('date');
+$date->setAttribute('class', 'form-control');
+$date->setAttribute('placeholder', 'Date');
+
 // This provides CSS classes for the submit button:
 $submit = $form->get('submit');
 $submit->setAttribute('class', 'btn btn-primary');
@@ -38,6 +42,12 @@ $form->prepare();
     <?= $this->formLabel($artist) ?>
     <?= $this->formElement($artist) ?>
     <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($date) ?>
+    <?= $this->formElement($date) ?>
+    <?= $this->formElementErrors()->render($date, ['class' => 'help-block']) ?>
 </div>
 
 <?= $this->formSubmit($submit); ?>
