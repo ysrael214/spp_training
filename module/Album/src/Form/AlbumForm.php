@@ -36,6 +36,19 @@ class AlbumForm extends Form
                 'label' => 'Date',
             ],
         ]);
+
+        $this->add([
+            'name' => 'age',
+            'type' => 'number',
+            
+            'options' => [
+                'label' => 'Age',
+            ],
+            'attributes' => [
+                'readonly' => 'true'
+            ],
+        ]);
+
         $this->add([
             'name' => 'submit',
             'type' => 'submit',

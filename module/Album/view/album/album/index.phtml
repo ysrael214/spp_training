@@ -14,13 +14,15 @@ $this->headTitle($title);
     <th>Title</th>
     <th>Artist</th>
     <th>Date</th>
+    <th>Age</th>
     <th>&nbsp;</th>
 </tr>
 <?php foreach ($albums as $album) : ?>
     <tr>
         <td><?= $this->escapeHtml($album->title) ?></td>
         <td><?= $this->escapeHtml($album->artist) ?></td>
-        <td><?= $this->escapeHtml($album->date) ?? '-' ?></td>
+        <td class="date"><?= $this->escapeHtml($album->date) ?? '-' ?></td>
+        <td class="age"></td>
         <td>
             <a href="<?= $this->url('album', ['action' => 'edit', 'id' => $album->id]) ?>">Edit</a>
             <a href="<?= $this->url('album', ['action' => 'delete', 'id' => $album->id]) ?>">Delete</a>
@@ -28,3 +30,5 @@ $this->headTitle($title);
     </tr>
 <?php endforeach; ?>
 </table>
+
+<?= $this->inlineScript()->appendFile($this->basePath('js/training/age_calculator.js')) ?>
