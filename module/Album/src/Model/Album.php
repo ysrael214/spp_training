@@ -16,6 +16,7 @@ class Album implements InputFilterAwareInterface
     public $id;
     public $artist;
     public $title;
+    public $date;
 
     private $inputFilter;
 
@@ -24,6 +25,7 @@ class Album implements InputFilterAwareInterface
         $this->id     = !empty($data['id']) ? $data['id'] : null;
         $this->artist = !empty($data['artist']) ? $data['artist'] : null;
         $this->title  = !empty($data['title']) ? $data['title'] : null;
+        $this->date  = !empty($data['date']) ? $data['date'] : null;
     }
 
     public function getArrayCopy()
@@ -32,6 +34,7 @@ class Album implements InputFilterAwareInterface
             'id'     => $this->id,
             'artist' => $this->artist,
             'title'  => $this->title,
+            'date'  => $this->date,
         ];
     }
 
@@ -96,6 +99,25 @@ class Album implements InputFilterAwareInterface
                  ],
              ],
          ]);
+
+         $inputFilter->add([
+            'name' => 'date',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+            ],
+            'validators' => [
+                [
+                    'name' => StringLength::class,
+                    'options' => [
+                        'encoding' => 'UTF-8',
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+            ],
+        ]);
  
          $this->inputFilter = $inputFilter;
          return $this->inputFilter;

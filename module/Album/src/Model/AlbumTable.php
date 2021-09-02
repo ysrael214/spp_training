@@ -39,6 +39,7 @@ class AlbumTable
         $data = [
             'artist' => $album->artist,
             'title'  => $album->title,
+            'date'  => $album->date,
         ];
 
         $id = (int) $album->id;
