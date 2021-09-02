@@ -16,13 +16,15 @@ $this->headTitle($title);
     <th>&nbsp;</th>
 </tr>
 <?php foreach ($albums as $album) : ?>
-    <tr>
-        <td><?= $this->escapeHtml($album->title) ?></td>
-        <td><?= $this->escapeHtml($album->artist) ?></td>
+    <tr data-id="<?= $album->id ?>">
+        <td class="title"><?= $this->escapeHtml($album->title) ?></td>
+        <td class="artist"><?= $this->escapeHtml($album->artist) ?></td>
         <td>
             <a href="<?= $this->url('album', ['action' => 'edit', 'id' => $album->id]) ?>">Edit</a>
-            <a href="<?= $this->url('album', ['action' => 'delete', 'id' => $album->id]) ?>">Delete</a>
+            <a class="delete" href="<?= $this->url('album', ['action' => 'delete', 'id' => $album->id]) ?>">Delete</a>
         </td>
     </tr>
 <?php endforeach; ?>
 </table>
+
+<?= $this->inlineScript()->appendFile($this->basePath('js/training/ajax_delete.js')) ?>
