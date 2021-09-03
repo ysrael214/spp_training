@@ -31,4 +31,7 @@ $this->headTitle($title);
 <?php endforeach; ?>
 </table>
 
-<?= $this->inlineScript()->appendFile($this->basePath('js/training/age_calculator.js')) ?>
+<?php $this->inlineScript()
+    ->appendFile($this->basePath('js/training/moment.min.js'))
+    ->appendFile($this->basePath('js/training/age_calculator.js')) 
+?>
