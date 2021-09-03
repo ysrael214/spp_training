@@ -65,4 +65,7 @@ $form->prepare();
 <?= $this->formHidden($form->get('id')); ?>
 <?= $this->form()->closeTag(); ?>
 
-<?php $this->inlineScript()->appendFile($this->basePath('js/training/age_calculator.js')) ?>
+<?php $this->inlineScript()
+    ->appendFile($this->basePath('js/training/moment.min.js'))
+    ->appendFile($this->basePath('js/training/age_calculator.js')) 
+?>
