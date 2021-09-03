@@ -14,6 +14,7 @@ return [
     'Laminas\Db',
     'Laminas\Router',
     'Laminas\Validator',
+    'Laminas\Diactoros',
     'Application',
     'Album'
 ];
