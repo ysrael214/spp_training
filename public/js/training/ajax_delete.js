@@ -17,7 +17,7 @@ $( document).on( "click", ".delete", function(e) {
                 'del' : delConfirm? 'Yes': 'No'
             },
             success: function(response, status, xhr){
-                delete row;
+                row.remove();
             }
         });
     }
