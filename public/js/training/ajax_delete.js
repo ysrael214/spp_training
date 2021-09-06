@@ -12,12 +12,17 @@ $( document).on( "click", ".delete", function(e) {
         $.ajax({
             method: "post",
             url: deleteURL,
+            dataType: 'json',
             data: {
                 'id' : rowID,
                 'del' : delConfirm? 'Yes': 'No'
             },
             success: function(response, status, xhr){
-                row.remove();
+                console.log(response);
+                if(response.success)
+                    row.remove();
+                else
+                    alert("We failed to delete your album.");
             }
         });
     }

@@ -5,6 +5,7 @@ namespace Album\Controller;
 use Album\Form\AlbumForm;
 use Album\Model\Album;
 use Album\Model\AlbumTable;
+use Laminas\Json\Json;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
@@ -102,14 +103,22 @@ class AlbumController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $del = $request->getPost('del', 'No');
+            $success = false;
 
             if ($del == 'Yes') {
                 $id = (int) $request->getPost('id');
-                $this->table->deleteAlbum($id);
+                $success = $this->table->deleteAlbum($id);
             }
 
-            // Redirect to list of albums
-            return $this->redirect()->toRoute('album');
+            if($request->isXmlHttpRequest()){
+                echo Json::encode(['success' => (bool) $success]);
+                exit();
+            }
+            else{
+                // Redirect to list of albums
+                return $this->redirect()->toRoute('album');
+            }
+            
         }
 
         return [
