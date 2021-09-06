@@ -18,7 +18,7 @@ $( document).on( "click", ".delete", function(e) {
                 'del' : delConfirm? 'Yes': 'No'
             },
             success: function(response, status, xhr){
-                console.log(response);
+                //console.log(response);
                 if(response.success)
                     row.remove();
                 else
